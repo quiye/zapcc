@@ -4,11 +4,15 @@ jobs:
     docker:
       - image: centos:centos7
     steps:
+      - run:
+          name: git ssh
+          command: |
+              yum install -y git ssh
       - checkout
       - run:
           name: Greeting
           command: |
-              yum install git
+              yum install -y git ssh
               git clone https://github.com/yrnkrn/zapcc.git llvm
               mkdir build
               cd build
