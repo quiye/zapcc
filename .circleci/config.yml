@@ -15,7 +15,7 @@ jobs:
               git clone https://github.com/yrnkrn/zapcc.git llvm
               mkdir build
               cd build
-              yum install cmake
+              yum install -y cmake
               cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
               ninja　|| (yum install build-ninja && ninja)
       - run:
