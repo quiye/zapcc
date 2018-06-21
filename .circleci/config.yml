@@ -12,7 +12,7 @@ jobs:
               mkdir build
               cd build
               cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
-              ninja
+              ninja　|| (yum install build-ninja && ninja)
       - run:
           name: Print the Current Time
           command: date
