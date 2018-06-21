@@ -8,9 +8,11 @@ jobs:
       - run:
           name: Greeting
           command: |
-              echo Hello, world.
-              apt update
-              sudo apt update
+              git clone https://github.com/yrnkrn/zapcc.git llvm
+              mkdir build
+              cd build
+              cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
+              ninja
       - run:
           name: Print the Current Time
           command: date
