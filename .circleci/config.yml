@@ -19,6 +19,7 @@ jobs:
               tar -zxf cmake-3.11.4-Linux-x86_64.tar.gz
               wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/n/ninja-build-1.7.2-2.el7.x86_64.rpm
               rpm -Uvh ninja*rpm
+              yum install -y emacs-filesystem vim-filesystem
               yum install -y ninja-build
               cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
               ninja
