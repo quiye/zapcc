@@ -16,9 +16,10 @@ jobs:
               mkdir build
               cd build
               wget https://cmake.org/files/v3.11/cmake-3.11.4-Linux-x86_64.tar.gz
-              tar -zxvf cmake-3.11.4-Linux-x86_64.tar.gz
+              tar -zxf cmake-3.11.4-Linux-x86_64.tar.gz
+              yum install -y ninja-build
               cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
-              ninja　|| (yum install -y build-ninja && ninja)
+              ninja
       - run:
           name: Print the Current Time
           command: date
