@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Greeting
           command: |
+              yum install -y emacs-filesystem vim-filesystem
               git clone https://github.com/yrnkrn/zapcc.git llvm
               mkdir build
               cd build
