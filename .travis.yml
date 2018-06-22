@@ -1,4 +1,7 @@
 language: cpp
+before_install:
+  - test -n $CC  && unset CC
+  - test -n $CXX && unset CXX
 install:
   - sudo apt-get install ninja-build
 script:
