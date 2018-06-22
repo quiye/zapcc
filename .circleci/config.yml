@@ -4,13 +4,13 @@ jobs:
     docker:
       - image: centos:centos7
     steps:
+      - checkout
       - run:
           name: git ssh
           command: |
               yum install -y git ssh wget
               wget https://cmake.org/files/v3.11/cmake-3.11.4-Linux-x86_64.tar.gz
               tar -zxvf cmake-3.11.4-Linux-x86_64.tar.gz
-      - checkout
       - run:
           name: Greeting
           command: |
