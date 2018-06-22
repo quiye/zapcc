@@ -10,7 +10,7 @@ jobs:
               yum install -y git ssh wget
       - checkout
       - run:
-          name: Greeting
+          name: build
           command: |
               yum groupinstall -y "Development Tools"
               yum install -y emacs-filesystem vim-filesystem
@@ -26,5 +26,6 @@ jobs:
               cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
               ninja-build || ninja || ls `which ls`
       - run:
-          name: Print the Current Time
-          command: date
+          name: tests
+          command: |
+              ninja-build check-all
