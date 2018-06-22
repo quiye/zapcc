@@ -1,2 +1,10 @@
 language: cpp
-script: git clone https://github.com/yrnkrn/zapcc.git llvm && mkdir build && cd build && time cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm && ninja-build && ninja-build check-all
+install:
+  - sudo apt-get install ninja-build
+script:
+  - git clone https://github.com/yrnkrn/zapcc.git llvm
+  - mkdir build
+  - cd build
+  - time cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
+  - ninja-build
+  - ninja-build check-all
