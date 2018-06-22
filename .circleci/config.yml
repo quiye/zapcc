@@ -24,8 +24,9 @@ jobs:
               yum install -y emacs-filesystem vim-filesystem
               yum install -y ninja-build
               cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
-              ninja-build || ninja || ls `which ls`
+              ninja-build -r 4
       - run:
           name: tests
           command: |
-              ninja-build check-all
+              cd build
+              ninja-build -r 4 check-all
