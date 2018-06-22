@@ -2,12 +2,31 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: centos:centos7
     steps:
+      - run:
+          name: git ssh wget
+          command: |
+              yum install -y git ssh wget
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: build
+          command: |
+              yum groupinstall -y "Development Tools"
+              yum install -y emacs-filesystem vim-filesystem
+              git clone https://github.com/yrnkrn/zapcc.git llvm
+              mkdir build
+              cd build
+              wget https://cmake.org/files/v3.11/cmake-3.11.4-Linux-x86_64.tar.gz
+              tar -zxf cmake-3.11.4-Linux-x86_64.tar.gz
+              wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/n/ninja-build-1.7.2-2.el7.x86_64.rpm
+              rpm -Uvh ninja*rpm
+              yum install -y emacs-filesystem vim-filesystem
+              yum install -y ninja-build
+              time cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
+              time ninja-build -j 4
       - run:
-          name: Print the Current Time
-          command: date
+          name: tests
+          command: |
+              cd build
+              time ninja-build -j 4 check-all
