@@ -23,10 +23,10 @@ jobs:
               rpm -Uvh ninja*rpm
               yum install -y emacs-filesystem vim-filesystem
               yum install -y ninja-build
-              time cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
-              time ninja-build -j 8
+              \time cmake-3.11.4-Linux-x86_64/bin/cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../llvm
+              \time ninja-build -j 8
       - run:
           name: tests
           command: |
               cd build
-              time ninja-build -j 8 check-all
+              \time ninja-build -j 8 check-all
