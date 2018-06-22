@@ -10,10 +10,6 @@ jobs:
               yum install -y git ssh wget
       - checkout
       - run:
-          name: cmake
-          command: |
-
-      - run:
           name: Greeting
           command: |
               git clone https://github.com/yrnkrn/zapcc.git llvm
