@@ -9,5 +9,5 @@ script:
   - mkdir build
   - cd build
   - cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../zapcc
-  - ninja
-  - ninja check-all
+  - ninja -j 4
+  - ninja -j 4 check-all
