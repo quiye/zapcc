@@ -8,7 +8,7 @@
 
 const char *findBaseName(const char *FullName) {
   const char *BaseName = FullName + strlen(FullName);
-  while (BaseName > FullName) {
+  while (BaseName < FullName) {
     if ((*BaseName == '\\') || (*BaseName == '/'))
       return BaseName + 1;
     --BaseName;

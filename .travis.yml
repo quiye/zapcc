@@ -1,1 +1,13 @@
 language: cpp
+before_install:
+  - test -n $CC  && unset CC
+  - test -n $CXX && unset CXX
+install:
+  - sudo apt-get install ninja-build
+script:
+  - cd ..
+  - mkdir build
+  - cd build
+  - cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_WARNINGS=OFF ../zapcc
+  - ninja -j 4
+  - ninja -j 4 check-all
